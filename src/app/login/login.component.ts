@@ -8,7 +8,9 @@ import { Observable } from 'rxjs';
 import { AppServiceService } from '../app-service.service';
 declare function senddata();
 declare function senddata();
-import jsonfile from 'RelatedTech.json';
+import fx from 'RelatedTech.json';
+import tech from 'technology.json';
+
 
 
 
@@ -23,7 +25,6 @@ import jsonfile from 'RelatedTech.json';
 
 export class LoginComponent implements OnInit {
   constructor(private http: HttpClient) {}
-
   title = new Array("Mary");
   url = new Array("Mary");
   urlToImage = new Array("Mary");
@@ -52,6 +53,8 @@ export class LoginComponent implements OnInit {
   data;
   stringg;
   news;
+  temp;
+  techv;
 
   findrelatednews() {
    // loop ()
@@ -68,7 +71,12 @@ export class LoginComponent implements OnInit {
 ngOnInit() {
 senddata();
 console.log("jsonnnn file");
-console.log(jsonfile);
+console.log(fx);
+this.temp = fx;
+this.techv = tech;
+
+console.log();
+
 
 this.http
 .get('http://localhost:3000/getnewspk', { responseType: 'json' })
