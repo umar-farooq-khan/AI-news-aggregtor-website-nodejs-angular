@@ -1,0 +1,17 @@
+[
+{"type":"header","version":"4.9.4","comment":"Export to JSON plugin for PHPMyAdmin"},
+{"type":"database","name":"dangovco_userum_1"},
+{"type":"table","name":"RelatedTech","database":"dangovco_userum_1","data":
+[
+{"idd":"0","author":"Dawid Bonkowski","title":"Huawei wbije ostateczny klin w USA! Nieoceniony mo?e by? Huawei P50 - gsmManiaK.pl","url":"https:\/\/www.gsmmaniak.pl\/1190964\/huawei-przejscie-na-harmonyos-miliony-smartfonow\/"},
+{"idd":"1","author":"Dawid Bonkowski","title":"Huawei wbije ostateczny klin w USA! Nieoceniony mo?e by? Huawei P50 - gsmManiaK.pl","url":"https:\/\/www.gsmmaniak.pl\/1190964\/huawei-przejscie-na-harmonyos-miliony-smartfonow\/"},
+{"idd":"2","author":"Dawid Bonkowski","title":"Huawei wbije ostateczny klin w USA! Nieoceniony mo?e by? Huawei P50 - gsmManiaK.pl","url":"https:\/\/www.gsmmaniak.pl\/1190964\/huawei-przejscie-na-harmonyos-miliony-smartfonow\/"},
+{"idd":"0","author":" ","title":"Bitcoin rusar vidare – ökat förtroende från Wall Street - Dagens Industri","url":"https:\/\/digital.di.se\/artikel\/bitcoin-rusar-vidare-okat-fortroende-fran-wall-street"},
+{"idd":"1","author":"Nyhetsbyrån Direkt","title":"Bitcoin upp med 20 procent på ett dygn – kostar nära 23.000 dollar - Dagens Industri","url":"https:\/\/www.di.se\/live\/bitcoin-upp-med-20-procent-pa-ett-dygn-kostar-nara-23-000-dollar\/"},
+{"idd":"2","author":" ","title":"Pourquoi et comment acheter des bitcoins ? - Boursorama","url":"https:\/\/www.boursorama.com\/bourse\/actualites\/pourquoi-et-comment-acheter-des-bitcoins-2650880ebcf64009aa248f233ba14942"},
+{"idd":"0","author":"HDblog.it","title":"Google Maps: arriva la \"Modalità Guida di Assistant\" (per ora solo USA) - HDblog","url":"https:\/\/www.hdblog.it\/google\/articoli\/n531214\/google-maps-modalita-guida-assistente\/"},
+{"idd":"1","author":"Paolo Sirio","title":"Apple and google maps are doing some collaboration.","url":"http:\/\/www.spaziogames.it\/ps5-i-bagarini-stanno-facendo-danni-irreparabili-alle-vendite\/"},
+{"idd":"2","author":"Associated Press","title":"Demandan diez estados a Google por ventas anticompetitivas - El Diario","url":"https:\/\/diario.mx\/tecnologia\/demandan-diez-estados-a-google-por-ventas-anticompetitivas-20201216-1742335.html"}
+]
+}
+]

@@ -1,0 +1,190 @@
+<app-salesman></app-salesman>
+<div class="row bpadding">
+  <div class="col-sm-12">
+
+    <!--Search Row-->
+    <div class="row">
+      <div class="col-2">
+        Customer Name
+      </div>
+      <div class="col-3">
+        <input type="text" placeholder="Search Customer" name="" value="">
+      </div>
+      <div class="col-1">
+        Bill No.
+      </div>
+      <div class="col-1">
+        <input readonly type="number" name="" value="">
+      </div>
+      <div class="col-1">
+        DATE
+      </div>
+      <div class="col-2">
+        <input type="date" id="date" name="" value="">
+      </div>
+      <div class="col-1">
+        Pur Rate
+      </div>
+      <div class="col-1">
+        <input readonly type="number" name="" value="">
+      </div>
+    </div>
+    <!--Search Row Close-->
+
+    <!--Add Product Row-->
+    <div class="row">
+      <div class="col-2">
+        Search item
+      </div>
+      <div class="col-3">
+        <input type="text" placeholder="Start Typing or scanning" name="" value="">
+      </div>
+      <div class="col-1">
+        QTY
+      </div>
+      <div class="col-1">
+        <input type="text" name="" value="">
+      </div>
+      <div class="col-1">
+        Unit
+      </div>
+      <div class="col-2">
+        <select class="" name="">
+          <option value="">Dozen</option>
+          <option value="">Piece</option>
+          <option value="">Cotton</option>
+        </select>
+      </div>
+      <div class="col-1">
+        RATE
+      </div>
+      <div class="col-1">
+        <input type="text" name="" value="">
+      </div>
+    </div>
+    <!--Add Product Row Close-->
+
+    <div class="row">
+      <div class="col-10">
+        <b>Added Products</b>
+      </div>
+
+    </div>
+
+
+
+<!--table-->
+
+    <div class="row">
+      <div class="col-12">
+        <table class="table table-bordered">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Item Name</th>
+              <th scope="col">Qty</th>
+              <th scope="col">Unit</th>
+              <th scope="col">Price</th>
+                <th class="text-center " scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+              <td>242</td>
+              <td class="text-center edit-block">
+                <span class="edit" >
+                  <button type="button" class="btn btn-success btn-sm">Edit</button>
+                </span>
+                <span class="delete" >
+                  <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+              <td>242</td>
+              <td class="text-center edit-block">
+                <span class="edit" >
+                  <button type="button" class="btn btn-success btn-sm">Edit</button>
+                </span>
+                <span class="delete" >
+                  <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Larry</td>
+              <td>the Bird</td>
+              <td>@twitter</td>
+              <td>242</td>
+              <td class="text-center edit-block">
+                <span class="edit" >
+                  <button type="button" class="btn btn-success btn-sm">Edit</button>
+                </span>
+                <span class="delete" >
+                  <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                </span>
+              </td>
+            </tr>
+
+
+
+          </tbody>
+        </table>
+
+
+      </div>
+
+    </div>
+    <!--AddedProduct and calculation Row Close-->
+
+    <div class="row">
+      <div class="col-9">
+
+      </div>
+      <div class="col-2">
+        Discount:
+      </div>
+      <div class="col-1">
+        <input type="text" name="" value="">
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-9">
+
+      </div>
+      <div class="col-2">
+        Total:
+      </div>
+      <div class="col-1">
+        <label for="total">34780</label>
+      </div>
+    </div>
+
+
+
+    <div class="row">
+      <div class="col-9">
+
+      </div>
+      <div class="col-2">
+        <button type="button" name="button">Save and Print</button>
+      </div>
+      <div class="col-1">
+        <button type="button" name="button">Cancel</button>
+      </div>
+    </div>
+
+
+  </div>
+</div>
