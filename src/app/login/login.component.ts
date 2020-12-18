@@ -44,6 +44,16 @@ export class LoginComponent implements OnInit {
   titlereltech = new Array("Mary");
   urlreltech = new Array("Mary");
   authorreltech = new Array("Mary");
+
+  titleeconomy = new Array("Mary");
+  urleconomy = new Array("Mary");
+  urlToImageeconomy = new Array("Mary");
+  authoreconomy = new Array("Mary");
+  desceconomy = new Array("Mary");
+
+  titlereleconomy = new Array("Mary");
+  urlreleconomy = new Array("Mary");
+  authorreleconomy = new Array("Mary");
   postId;
   city;
   related;
@@ -92,6 +102,37 @@ this.http
     console.log(this.desc[i]);
   }
 });
+
+this.http
+    .get('http://localhost:3000/economynews', { responseType: 'json' })
+    .subscribe((res) => {
+      console.log("whole economy news"); console.log(res);
+      for (let i = 0 ; i <= Object.keys(res).length; i++) {
+        this.titleeconomy[i] = res[i].title;
+        this.desceconomy[i] = res[i].description;
+        this.urlToImageeconomy[i] = res[i].urlToImage;
+        this.authoreconomy[i] = res[i].author;
+        this.urleconomy[i] = res[i].url;
+        console.log("getting into economy news");
+        // console.log(this.title[i]);
+        console.log(this.desc[i]);
+      }
+    });
+
+this.http
+    .get('http://localhost:3000/relatedeconomy', { responseType: 'json' })
+    .subscribe((resrel) => {
+      for (let i = 0 ; i <= Object.keys(resrel).length; i++) {
+        this.titlereleconomy[i] = resrel[i].title;
+        this.urlreleconomy[i] = resrel[i].url;
+        this.authorreleconomy[i] = resrel[i].author;
+        console.log("putting Rel");
+        console.log(this.titlereleconomy[i]);
+      }
+    });
+
+
+
 
 this.http
     .get('http://localhost:3000/technews', { responseType: 'json' })
