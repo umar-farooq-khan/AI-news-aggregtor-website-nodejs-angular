@@ -115,7 +115,7 @@ this.http
       console.log("whole region news"); console.log(res);
       for (let i = 0 ; i <= Object.keys(res).length; i++) {
         this.titleregion[i] = res[i].title;
-        this.descregion[i] = res[i].description;
+        this.descregion[i] = res[i].description.replace(/[0-9]/gi, " ", ).replace(/chars/gi, " " );
         this.urlToImageregion[i] = res[i].urlToImage;
         this.authorregion[i] = res[i].author;
         this.urlregion[i] = res[i].url;
@@ -146,7 +146,7 @@ this.http
 .subscribe((res) => {
   for (let i = 0 ; i <= Object.keys(res).length; i++) {
     this.title[i] = res[i].title;
-    this.desc[i] = res[i].description;
+    this.desc[i] = res[i].description.replace(/[0-9]/gi, " ", ).replace(/chars/gi, " " );
     this.urlToImage[i] = res[i].urlToImage;
     this.author[i] = res[i].author;
     this.url[i] = res[i].url;
@@ -163,7 +163,7 @@ this.http
       console.log("whole world news"); console.log(res);
       for (let i = 0 ; i <= Object.keys(res).length; i++) {
         this.titleworld[i] = res[i].title;
-        this.descworld[i] = res[i].description;
+        this.descworld[i] = res[i].description.replace(/[0-9]/gi, " ", ).replace(/chars/gi, " " );
         this.urlToImageworld[i] = res[i].urlToImage;
         this.authorworld[i] = res[i].author;
         this.urlworld[i] = res[i].url;
@@ -194,7 +194,7 @@ this.http
       console.log("whole economy news"); console.log(res);
       for (let i = 0 ; i <= Object.keys(res).length; i++) {
         this.titleeconomy[i] = res[i].title;
-        this.desceconomy[i] = res[i].description;
+        this.desceconomy[i] = res[i].description.replace(/[0-9]/gi, " ", ).replace(/chars/gi, " " );
         this.urlToImageeconomy[i] = res[i].urlToImage;
         this.authoreconomy[i] = res[i].author;
         this.urleconomy[i] = res[i].url;
@@ -225,7 +225,7 @@ this.http
       console.log("whole tech news"); console.log(res);
       for (let i = 0 ; i <= Object.keys(res).length; i++) {
         this.titletech[i] = res[i].title;
-        this.desctech[i] = res[i].description;
+        this.desctech[i] = res[i].description.replace(/[0-9]/gi, " ", ).replace(/chars/gi, " " );
         this.urlToImagetech[i] = res[i].urlToImage;
         this.authortech[i] = res[i].author;
         this.urltech[i] = res[i].url;
