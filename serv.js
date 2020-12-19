@@ -36,6 +36,50 @@ let removedstoparray=[]
 // });
 
 
+app.get("/regionnews", (req, res) => {
+  fullresults={"name":"key"}  //isko json object banan hai
+  //res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+  console.log("region news par call ayi")
+  connection.query("SELECT  * FROM `region` where description IS NOT NULL limit 3", function (error, results, fields) {
+    resultsglobal = results;
+    console.log("data got"); console.log(results) ; console.log("Error: "+error) //uncomment when koi error aya
+    res.send(resultsglobal)
+    for (var i=0; i<results.length; i++)   //it will loop searching the rel news one by one
+    {
+      removedstop=removestopwords(results[i].title)
+      removedstoparray=removedstop.split(" ")
+
+      formattedquery=formatquery(removedstoparray, "region")
+      console.log(formattedquery)
+      connection.query(formattedquery, function (error, resultsrelated, fields)
+      {
+        console.log("Results 220 from region news") ;console.log(resultsrelated); console.log("error 217  "+error);
+        //insert this whole result
+        for( var k=0 ; k<resultsrelated.length; k++)
+        {
+          insertwholeresult(resultsrelated[k],k,"Relatedregion")
+        }
+
+        //now selectand pass on
+        app.get("/relatedregion", (req, res) => {
+          console.log("related par call ayi")
+          connection.query("SELECT * FROM `Relatedregion`", function (error, results, fields)
+          {
+            resultsglobal = results;
+            console.log("related region data got"); console.log(results) ; console.log("Error: "+error) //uncomment when koi error aya
+
+            res.send(results)
+          });
+        });
+
+      }); //select like query
+
+    }//for loop
+  });
+});
+
+
+
 
 app.get("/getnewspk", (req, res) => {
   fullresults={"name":"key"}  //isko json object banan hai
@@ -62,6 +106,49 @@ app.get("/getnewspk", (req, res) => {
           insertwholeresult(resultsrelated[k],k,"RelatedNews_1")
         }
     }); //select like query
+
+    }//for loop
+  });
+});
+
+
+app.get("/worldnews", (req, res) => {
+  fullresults={"name":"key"}  //isko json object banan hai
+  //res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+  console.log("world news par call ayi")
+  connection.query("SELECT  * FROM `world` where description IS NOT NULL limit 3", function (error, results, fields) {
+    resultsglobal = results;
+    console.log("data got"); console.log(results) ; console.log("Error: "+error) //uncomment when koi error aya
+    res.send(resultsglobal)
+    for (var i=0; i<results.length; i++)   //it will loop searching the rel news one by one
+    {
+      removedstop=removestopwords(results[i].title)
+      removedstoparray=removedstop.split(" ")
+
+      formattedquery=formatquery(removedstoparray, "world")
+      console.log(formattedquery)
+      connection.query(formattedquery, function (error, resultsrelated, fields)
+      {
+        console.log("Results 220 from world news") ;console.log(resultsrelated); console.log("error 217  "+error);
+        //insert this whole result
+        for( var k=0 ; k<resultsrelated.length; k++)
+        {
+          insertwholeresult(resultsrelated[k],k,"Relatedworld")
+        }
+
+        //now selectand pass on
+        app.get("/relatedworld", (req, res) => {
+          console.log("related par call ayi")
+          connection.query("SELECT * FROM `Relatedworld`", function (error, results, fields)
+          {
+            resultsglobal = results;
+            console.log("related world data got"); console.log(results) ; console.log("Error: "+error) //uncomment when koi error aya
+
+            res.send(results)
+          });
+        });
+
+      }); //select like query
 
     }//for loop
   });
