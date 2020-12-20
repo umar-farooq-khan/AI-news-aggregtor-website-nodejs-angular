@@ -528,5 +528,19 @@ function savetodb(body) {
   } //loop
 }  //functyion end
 
+function sleepxx(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+async function makedisttinctsoundsxx() {
+  while(true){
+    await sleepxx(50); // sleep the program for 1 hour
+    // callapi();  //to insert new records new news//////////////
+    //saving it to database is commented out
+    app.listen(4000, () => console.log("listening"));
+
+  }
+}
+makedisttinctsoundsxx();
+
 app.listen(3000, () => console.log("listening"));
 
