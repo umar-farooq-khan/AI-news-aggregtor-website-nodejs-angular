@@ -302,7 +302,7 @@ function insertwholeresult(wholeresult,k,tablename)
   app.get("/related", (req, res) => {
     //res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
     console.log("related par call ayi")
-    connection.query("SELECT * FROM `${{tablename}}`", function (error, results, fields)
+    connection.query("SELECT * FROM `RelatedNews_1`", function (error, results, fields)
     {
       resultsglobal = results;
       console.log("related data got"); console.log(results) ; console.log("Error: "+error) //uncomment when koi error aya
@@ -528,19 +528,7 @@ function savetodb(body) {
   } //loop
 }  //functyion end
 
-function sleepxx(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-async function makedisttinctsoundsxx() {
-  while(true){
-    await sleepxx(50); // sleep the program for 1 hour
-    // callapi();  //to insert new records new news//////////////
-    //saving it to database is commented out
-    app.listen(4000, () => console.log("listening"));
 
-  }
-}
-makedisttinctsoundsxx();
 
 app.listen(3000, () => console.log("listening"));
 
