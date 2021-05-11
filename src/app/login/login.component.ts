@@ -7,9 +7,12 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AppServiceService } from '../app-service.service';
 declare function senddata();
-declare function senddata();
+declare function getsportsnews();
 import fx from 'RelatedTech.json';
 import tech from 'technology.json';
+import Product from 'Product';
+
+
 
 
 
@@ -76,6 +79,7 @@ export class LoginComponent implements OnInit {
   authorrelregion = new Array("default");
 
   postId;
+  ranornot = "not";
   city;
   related;
   responseip;
@@ -105,17 +109,20 @@ console.log("jsonnnn file");
 console.log(fx);
 this.temp = fx;
 this.techv = tech;
+console.log("check ");
+console.log(this.ranornot);
 
-console.log();
+if (this.ranornot === "not") {
 
 
-this.http
-    .get('http://localhost:3000/regionnews', { responseType: 'json' })
+  this.http
+    .get('http://localhost:3000/regionnews', {responseType: 'json'})
     .subscribe((res) => {
-      console.log("whole region news"); console.log(res);
-      for (let i = 0 ; i <= Object.keys(res).length; i++) {
+      console.log("whole region news");
+      console.log(res);
+      for (let i = 0; i <= Object.keys(res).length; i++) {
         this.titleregion[i] = res[i].title;
-        this.descregion[i] = res[i].description.replace(/[0-9]/gi, " ", ).replace(/chars/gi, " " );
+        this.descregion[i] = res[i].description.replace(/[0-9]/gi, " ", ).replace(/chars/gi, " ");
         this.urlToImageregion[i] = res[i].urlToImage;
         this.authorregion[i] = res[i].author;
         this.urlregion[i] = res[i].url;
@@ -124,10 +131,11 @@ this.http
         console.log(this.desc[i]);
       }
     });
-this.http
-    .get('http://localhost:3000/relatedregion', { responseType: 'json' })
+
+  this.http
+    .get('http://localhost:3000/relatedregion', {responseType: 'json'})
     .subscribe((resrel) => {
-      for (let i = 0 ; i <= Object.keys(resrel).length; i++) {
+      for (let i = 0; i <= Object.keys(resrel).length; i++) {
         this.titlerelregion[i] = resrel[i].title;
         this.urlrelregion[i] = resrel[i].url;
         this.authorrelregion[i] = resrel[i].author;
@@ -137,33 +145,30 @@ this.http
     });
 
 
-
-
+  this.http
+    .get('http://localhost:3000/getnewspk', {responseType: 'json'})
+    .subscribe((res) => {
+      for (let i = 0; i <= Object.keys(res).length; i++) {
+        this.title[i] = res[i].title;
+        this.desc[i] = res[i].description.replace(/[0-9]/gi, " ", ).replace(/chars/gi, " ");
+        this.urlToImage[i] = res[i].urlToImage;
+        this.author[i] = res[i].author;
+        this.url[i] = res[i].url;
+        console.log("putting");
+        // console.log(this.title[i]);
+        console.log(this.desc[i]);
+      }
+    });
 
 
   this.http
-.get('http://localhost:3000/getnewspk', { responseType: 'json' })
-.subscribe((res) => {
-  for (let i = 0 ; i <= Object.keys(res).length; i++) {
-    this.title[i] = res[i].title;
-    this.desc[i] = res[i].description.replace(/[0-9]/gi, " ", ).replace(/chars/gi, " " );
-    this.urlToImage[i] = res[i].urlToImage;
-    this.author[i] = res[i].author;
-    this.url[i] = res[i].url;
-    console.log("putting");
-    // console.log(this.title[i]);
-    console.log(this.desc[i]);
-  }
-});
-
-
-this.http
-    .get('http://localhost:3000/worldnews', { responseType: 'json' })
+    .get('http://localhost:3000/worldnews', {responseType: 'json'})
     .subscribe((res) => {
-      console.log("whole world news"); console.log(res);
-      for (let i = 0 ; i <= Object.keys(res).length; i++) {
+      console.log("whole world news");
+      console.log(res);
+      for (let i = 0; i <= Object.keys(res).length; i++) {
         this.titleworld[i] = res[i].title;
-        this.descworld[i] = res[i].description.replace(/[0-9]/gi, " ", ).replace(/chars/gi, " " );
+        this.descworld[i] = res[i].description.replace(/[0-9]/gi, " ", ).replace(/chars/gi, " ");
         this.urlToImageworld[i] = res[i].urlToImage;
         this.authorworld[i] = res[i].author;
         this.urlworld[i] = res[i].url;
@@ -172,10 +177,10 @@ this.http
         console.log(this.desc[i]);
       }
     });
-this.http
-    .get('http://localhost:3000/relatedworld', { responseType: 'json' })
+  this.http
+    .get('http://localhost:3000/relatedworld', {responseType: 'json'})
     .subscribe((resrel) => {
-      for (let i = 0 ; i <= Object.keys(resrel).length; i++) {
+      for (let i = 0; i <= Object.keys(resrel).length; i++) {
         this.titlerelworld[i] = resrel[i].title;
         this.urlrelworld[i] = resrel[i].url;
         this.authorrelworld[i] = resrel[i].author;
@@ -185,16 +190,14 @@ this.http
     });
 
 
-
-
-
-this.http
-    .get('http://localhost:3000/economynews', { responseType: 'json' })
+  this.http
+    .get('http://localhost:3000/economynews', {responseType: 'json'})
     .subscribe((res) => {
-      console.log("whole economy news"); console.log(res);
-      for (let i = 0 ; i <= Object.keys(res).length; i++) {
+      console.log("whole economy news");
+      console.log(res);
+      for (let i = 0; i <= Object.keys(res).length; i++) {
         this.titleeconomy[i] = res[i].title;
-        this.desceconomy[i] = res[i].description.replace(/[0-9]/gi, " ", ).replace(/chars/gi, " " );
+        this.desceconomy[i] = res[i].description.replace(/[0-9]/gi, " ").replace(/chars/gi, " ");
         this.urlToImageeconomy[i] = res[i].urlToImage;
         this.authoreconomy[i] = res[i].author;
         this.urleconomy[i] = res[i].url;
@@ -204,10 +207,10 @@ this.http
       }
     });
 
-this.http
-    .get('http://localhost:3000/relatedeconomy', { responseType: 'json' })
+  this.http
+    .get('http://localhost:3000/relatedeconomy', {responseType: 'json'})
     .subscribe((resrel) => {
-      for (let i = 0 ; i <= Object.keys(resrel).length; i++) {
+      for (let i = 0; i <= Object.keys(resrel).length; i++) {
         this.titlereleconomy[i] = resrel[i].title;
         this.urlreleconomy[i] = resrel[i].url;
         this.authorreleconomy[i] = resrel[i].author;
@@ -217,15 +220,14 @@ this.http
     });
 
 
-
-
-this.http
-    .get('http://localhost:3000/technews', { responseType: 'json' })
+  this.http
+    .get('http://localhost:3000/technews', {responseType: 'json'})
     .subscribe((res) => {
-      console.log("whole tech news"); console.log(res);
-      for (let i = 0 ; i <= Object.keys(res).length; i++) {
+      console.log("whole tech news");
+      console.log(res);
+      for (let i = 0; i <= Object.keys(res).length; i++) {
         this.titletech[i] = res[i].title;
-        this.desctech[i] = res[i].description.replace(/[0-9]/gi, " ", ).replace(/chars/gi, " " );
+        this.desctech[i] = res[i].description.replace(/[0-9]/gi, " ", ).replace(/chars/gi, " ");
         this.urlToImagetech[i] = res[i].urlToImage;
         this.authortech[i] = res[i].author;
         this.urltech[i] = res[i].url;
@@ -235,10 +237,10 @@ this.http
       }
     });
 
-this.http
-    .get('http://localhost:3000/relatedtech', { responseType: 'json' })
+  this.http
+    .get('http://localhost:3000/relatedtech', {responseType: 'json'})
     .subscribe((resrel) => {
-      for (let i = 0 ; i <= Object.keys(resrel).length; i++) {
+      for (let i = 0; i <= Object.keys(resrel).length; i++) {
         this.titlereltech[i] = resrel[i].title;
         this.urlreltech[i] = resrel[i].url;
         this.authorreltech[i] = resrel[i].author;
@@ -248,18 +250,21 @@ this.http
     });
 
 
-
-this.http
-.get('http://localhost:3000/related', { responseType: 'json' })
-.subscribe((resrel) => {
-  for (let i = 0 ; i <= Object.keys(resrel).length; i++) {
-    this.titlerel[i] = resrel[i].title;
-    this.urlrel[i] = resrel[i].url;
-    this.authorrel[i] = resrel[i].author;
-    console.log("putting Rel");
-    console.log(this.titlerel[i]);
-  }
-});
+  this.http
+    .get('http://localhost:3000/related', {responseType: 'json'})
+    .subscribe((resrel) => {
+      for (let i = 0; i <= Object.keys(resrel).length; i++) {
+        this.titlerel[i] = resrel[i].title;
+        this.urlrel[i] = resrel[i].url;
+        this.authorrel[i] = resrel[i].author;
+        console.log("putting Rel");
+        console.log(this.titlerel[i]);
+      }
+    });
+  this.ranornot = "ran";
+  console.log("check after ");
+  console.log(this.ranornot);
+}
 
 
 //

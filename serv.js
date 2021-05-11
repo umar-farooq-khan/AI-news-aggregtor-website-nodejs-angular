@@ -15,15 +15,35 @@ function parse(str) {
 var xx="fgdfgd"
 stringggg= `hey there ${xx}`
 console.log(stringggg)
+// const connection = mysql.createConnection({
+//   host: "70.32.23.60",
+//   port: "3306",
+//   database: "dangovco_userum_1",
+//   user: "dangovco_hamzakhan",
+//   password: "password",
+// });
 const connection = mysql.createConnection({
-  host: "70.32.23.60",
+  host: "localhost",
   port: "3306",
   database: "dangovco_userum_1",
-  user: "dangovco_hamzakhan",
-  password: "password",
+  user: "root",
+  password: "",
 });
+// error access denied at username ki jaga username hote @ 115-186-141-139.nayatel.pk,, @ ke bad jo ata vo ap ne cpanel main remote sql k andr dal dena hai ye dalna hota hai remote access, warna error ata hai k
+var ranornot="not"
 var resultsglobal = "";
 let removedstoparray=[]
+var globalspecific1=""
+var globalspecific2=""
+var globalspecific3=""
+var globalspecific4=""
+var globalspecific5=""
+var globalspecific6=""
+var globalspecific7=""
+var globalspecific=""
+var globalspecific=""
+var globalspecific=""
+
 
 // connection.query("SELECT * FROM `mytable1`", function (error, results, fields) {
 //   resultsglobal = results;
@@ -34,49 +54,66 @@ let removedstoparray=[]
 //     res.send(results)
 //   });
 // });
+console.log(ranornot)
 
-
-app.get("/regionnews", (req, res) => {
-  fullresults={"name":"key"}  //isko json object banan hai
-  //res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
-  console.log("region news par call ayi")
-  connection.query("SELECT  * FROM `region` where description IS NOT NULL limit 3", function (error, results, fields) {
-    resultsglobal = results;
-    console.log("data got"); console.log(results) ; console.log("Error: "+error) //uncomment when koi error aya
-    res.send(resultsglobal)
-    for (var i=0; i<results.length; i++)   //it will loop searching the rel news one by one
+  app.get("/regionnews", (req, res) => {
+    fullresults = {"name": "key"}  //isko json object banan hai
+    //res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+    console.log("region news par call ayi")
+    console.log(ranornot);
+    if(ranornot === "ran")
     {
-      removedstop=removestopwords(results[i].title)
-      removedstoparray=removedstop.split(" ")
+      console.log("already ran bro and results that are sending are ");
+      console.log(globalspecific1)
+      res.send(globalspecific1)
 
-      formattedquery=formatquery(removedstoparray, "region")
-      console.log(formattedquery)
-      connection.query(formattedquery, function (error, resultsrelated, fields)
+    }
+    if (ranornot != "ran") {
+    connection.query("SELECT  * FROM `region` where description IS NOT NULL limit 5", function (error, results, fields) {
+      resultsglobal1 = results;
+      console.log("data got from region first time");
+      console.log(results);
+      console.log("Error: " + error) //uncomment when koi error aya
+      res.send(resultsglobal1)
+      for (var i = 0; i < results.length; i++)   //it will loop searching the rel news one by one
       {
-        console.log("Results 220 from region news") ;console.log(resultsrelated); console.log("error 217  "+error);
-        //insert this whole result
-        for( var k=0 ; k<resultsrelated.length; k++)
-        {
-          insertwholeresult(resultsrelated[k],k,"Relatedregion")
-        }
+        removedstop = removestopwords(results[i].title)
+        removedstoparray = removedstop.split(" ")
 
-        //now selectand pass on
-        app.get("/relatedregion", (req, res) => {
-          console.log("related par call ayi")
-          connection.query("SELECT * FROM `Relatedregion`", function (error, results, fields)
-          {
-            resultsglobal = results;
-            console.log("related region data got"); console.log(results) ; console.log("Error: "+error) //uncomment when koi error aya
+        formattedquery = formatquery(removedstoparray, "region")
+        console.log(formattedquery)
+        connection.query(formattedquery, function (error, resultsrelated, fields) {
+          console.log("Results 220 from region news");
+         // console.log(resultsrelated);
+          console.log("error 81  " + error);
+          //insert this whole result
+          for (var k = 0; k < resultsrelated.length; k++) {
+            insertwholeresult(resultsrelated[k], k, "Relatedregion")
+          }
 
-            res.send(results)
-          });
-        });
+          //now selectand pass on
+          // app.get("/relatedregion", (req, res) => {
+          //   console.log("related par call ayi")
+          //   connection.query("SELECT * FROM `Relatedregion`", function (error, results, fields) {
+          //     resultsglobal = results;
+          //     globalspecific2= results
+          //     console.log("related region data got");
+          //     console.log(results);
+          //     console.log("Error: " + error) //uncomment when koi error aya
+          //
+          //     res.send(results)
+          //   });
+          // });
 
-      }); //select like query
+        }); //select like query
 
-    }//for loop
+      }//for loop
+    }); //query
+      ranornot = "ran"
+    }
+  ranornot = "ran"
   });
-});
+
 
 
 
@@ -85,9 +122,9 @@ app.get("/getnewspk", (req, res) => {
   fullresults={"name":"key"}  //isko json object banan hai
   //res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
   console.log("getnewpknews par call ayi")
-  connection.query("SELECT  * FROM `mytable1` where description IS NOT NULL limit 4", function (error, results, fields) {
+  connection.query("SELECT  * FROM `mytable1` where description IS NOT NULL limit 8", function (error, results, fields) {
     resultsglobal = results;
-    console.log("data got"); console.log(results) ; console.log("Error: "+error) //uncomment when koi error aya
+   // console.log("data got"); console.log(results) ; console.log("Error: "+error) //uncomment when koi error aya
     res.send(resultsglobal)
     for (var i=0; i<results.length; i++)   //it will loop searching the rel news one by one
     {
@@ -96,10 +133,10 @@ app.get("/getnewspk", (req, res) => {
       removedstoparray=removedstop.split(" ")
 
         formattedquery=formatquery(removedstoparray,"mytable1")
-        console.log(formattedquery)
+       // console.log(formattedquery)
       connection.query(formattedquery, function (error, resultsrelated, fields)
       {
-        console.log("Results 220") ;console.log(resultsrelated); console.log("error 217  "+error);
+        //console.log("Results 220") ;console.log(resultsrelated); console.log("error 217  "+error);
         //insert this whole result
         for( var k=0 ; k<resultsrelated.length; k++)
         {
@@ -116,9 +153,9 @@ app.get("/worldnews", (req, res) => {
   fullresults={"name":"key"}  //isko json object banan hai
   //res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
   console.log("world news par call ayi")
-  connection.query("SELECT  * FROM `world` where description IS NOT NULL limit 3", function (error, results, fields) {
+  connection.query("SELECT  * FROM `world` where description IS NOT NULL limit 8", function (error, results, fields) {
     resultsglobal = results;
-    console.log("data got"); console.log(results) ; console.log("Error: "+error) //uncomment when koi error aya
+    //console.log("data got"); console.log(results) ; console.log("Error: "+error) //uncomment when koi error aya
     res.send(resultsglobal)
     for (var i=0; i<results.length; i++)   //it will loop searching the rel news one by one
     {
@@ -126,10 +163,11 @@ app.get("/worldnews", (req, res) => {
       removedstoparray=removedstop.split(" ")
 
       formattedquery=formatquery(removedstoparray, "world")
-      console.log(formattedquery)
+     // console.log(formattedquery)
       connection.query(formattedquery, function (error, resultsrelated, fields)
       {
-        console.log("Results 220 from world news") ;console.log(resultsrelated); console.log("error 217  "+error);
+      //
+        //  console.log("Results 220 from world news") ;console.log(resultsrelated); console.log("error 217  "+error);
         //insert this whole result
         for( var k=0 ; k<resultsrelated.length; k++)
         {
@@ -142,7 +180,7 @@ app.get("/worldnews", (req, res) => {
           connection.query("SELECT * FROM `Relatedworld`", function (error, results, fields)
           {
             resultsglobal = results;
-            console.log("related world data got"); console.log(results) ; console.log("Error: "+error) //uncomment when koi error aya
+          //  console.log("related world data got"); console.log(results) ; console.log("Error: "+error) //uncomment when koi error aya
 
             res.send(results)
           });
@@ -160,9 +198,9 @@ app.get("/technews", (req, res) => {
   fullresults={"name":"key"}  //isko json object banan hai
   //res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
   console.log("tech news par call ayi")
-  connection.query("SELECT  * FROM `technology` where description IS NOT NULL limit 3", function (error, results, fields) {
+  connection.query("SELECT  * FROM `technology` where description IS NOT NULL limit 8", function (error, results, fields) {
     resultsglobal = results;
-    console.log("data got"); console.log(results) ; console.log("Error: "+error) //uncomment when koi error aya
+    //console.log("data got"); console.log(results) ; console.log("Error: "+error) //uncomment when koi error aya
     res.send(resultsglobal)
     for (var i=0; i<results.length; i++)   //it will loop searching the rel news one by one
     {
@@ -170,10 +208,10 @@ app.get("/technews", (req, res) => {
       removedstoparray=removedstop.split(" ")
 
       formattedquery=formatquery(removedstoparray, "technology")
-      console.log(formattedquery)
+     // console.log(formattedquery)
       connection.query(formattedquery, function (error, resultsrelated, fields)
       {
-        console.log("Results 220 from tech news") ;console.log(resultsrelated); console.log("error 217  "+error);
+       // console.log("Results 220 from tech news") ;console.log(resultsrelated); console.log("error 217  "+error);
         //insert this whole result
         for( var k=0 ; k<resultsrelated.length; k++)
         {
@@ -186,7 +224,7 @@ app.get("/technews", (req, res) => {
           connection.query("SELECT * FROM `RelatedTech`", function (error, results, fields)
           {
             resultsglobal = results;
-            console.log("related tech data got"); console.log(results) ; console.log("Error: "+error) //uncomment when koi error aya
+         //   console.log("related tech data got"); console.log(results) ; console.log("Error: "+error) //uncomment when koi error aya
 
             res.send(results)
           });
@@ -203,9 +241,9 @@ app.get("/economynews", (req, res) => {
   fullresults={"name":"key"}  //isko json object banan hai
   //res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
   console.log("economy news par call ayi")
-  connection.query("SELECT  * FROM `economy` where description IS NOT NULL limit 3", function (error, results, fields) {
+  connection.query("SELECT  * FROM `economy` where description IS NOT NULL limit 10", function (error, results, fields) {
     resultsglobal = results;
-    console.log("data got"); console.log(results) ; console.log("Error: "+error) //uncomment when koi error aya
+   // console.log("data got"); console.log(results) ; console.log("Error: "+error) //uncomment when koi error aya
     res.send(resultsglobal)
     for (var i=0; i<results.length; i++)   //it will loop searching the rel news one by one
     {
@@ -213,10 +251,10 @@ app.get("/economynews", (req, res) => {
       removedstoparray=removedstop.split(" ")
 
       formattedquery=formatquery(removedstoparray, "economy")
-      console.log(formattedquery)
+      //console.log(formattedquery)
       connection.query(formattedquery, function (error, resultsrelated, fields)
       {
-        console.log("Results 220 from tech news") ;console.log(resultsrelated); console.log("error 217  "+error);
+        //console.log("Results 220 from tech news") ;console.log(resultsrelated); console.log("error 217  "+error);
         //insert this whole result
         for( var k=0 ; k<resultsrelated.length; k++)
         {
@@ -229,7 +267,7 @@ app.get("/economynews", (req, res) => {
           connection.query("SELECT * FROM `Relatedeconomy`", function (error, results, fields)
           {
             resultsglobal = results;
-            console.log("related economy data got"); console.log(results) ; console.log("Error: "+error) //uncomment when koi error aya
+         //   console.log("related economy data got"); console.log(results) ; console.log("Error: "+error) //uncomment when koi error aya
 
             res.send(results)
           });
@@ -270,11 +308,11 @@ function insertwholeresult(wholeresult,k,tablename)
 
         var url = url.toString().replace(/\,/g, "").replace(/\'/g, "");
         url = "'" + url + "'";
-        console.log("query inserting")
+       // console.log("query inserting")
 
         qstring =
       `INSERT INTO ${tablename}(idd,author,title,url) VALUES (%s, %s, %s, %s)`;
-        console.log(qstring)
+        //console.log(qstring)
 
         querystring = parse(
       qstring,
@@ -284,11 +322,11 @@ function insertwholeresult(wholeresult,k,tablename)
       url
     );
     querystring = querystring.replace("null", "' '");
-    console.log('INSTERTEDDDDDDDDDDDD queryyyyy')
-    console.log(querystring)
+    //console.log('INSTERTEDDDDDDDDDDDD queryyyyy')
+    //console.log(querystring)
     connection.query(querystring, function (error, insertedresult, fields)
     {
-      console.log("Results 90 ") ;console.log(insertedresult); console.log("error 90  "+error);
+    //  console.log("Results 90 ") ;console.log(insertedresult); console.log("error 90  "+error);
       //insert this whole result
 
     });
@@ -305,12 +343,35 @@ function insertwholeresult(wholeresult,k,tablename)
     connection.query("SELECT * FROM `RelatedNews_1`", function (error, results, fields)
     {
       resultsglobal = results;
-      console.log("related data got"); console.log(results) ; console.log("Error: "+error) //uncomment when koi error aya
+     // console.log("related data got"); console.log(results) ; console.log("Error: "+error) //uncomment when koi error aya
 
     res.send(results)
     });
   });
 
+app.get("/entertainmentnews", (req, res) => {
+  //res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+  console.log("fetching entertainment from db")
+  connection.query("SELECT * FROM `entertainment` limit 8", function (error, results, fields)
+  {
+    resultsglobal = results;
+    // console.log("related data got"); console.log(results) ; console.log("Error: "+error) //uncomment when koi error aya
+
+    res.send(results)
+  });
+});
+
+app.get("/lifestylenews", (req, res) => {
+  //res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+  console.log("fetching entertainment from db")
+  connection.query("SELECT * FROM `lifestyle` limit 8", function (error, results, fields)
+  {
+    resultsglobal = results;
+    // console.log("related data got"); console.log(results) ; console.log("Error: "+error) //uncomment when koi error aya
+
+    res.send(results)
+  });
+});
 
 function formatquery(stoparray,tablename)
 {
@@ -322,8 +383,8 @@ function formatquery(stoparray,tablename)
    myquery=myquery+ ` OR '%${stoparray[i]}%'`
   }
   myquery= myquery+ " limit 3"
-  console.log(`Like query from ${tablename}`);
-  console.log(myquery)
+  //console.log(`Like query from ${tablename}`);
+  //console.log(myquery)
   return myquery
 }
 
